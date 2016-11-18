@@ -2,7 +2,7 @@
 - name: install supervisord
   pip:
     name: supervisor
-    version: "{{ version }}"
+    version: "{{ supervisor_version }}"
     state: present
     executable: "{{ executable_pip }}"
   environment:
