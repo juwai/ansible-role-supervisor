@@ -1,4 +1,5 @@
 ---
-supervisord_config_dir: "/etc/supervisor.d"
+supervisord_config_dir: '/etc/supervisor.d'
+supervisord_nodaemon: false
+supervisord_stdout_enabled: false
 supervisord_version: 3.3.1
-
