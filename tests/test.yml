@@ -2,5 +2,7 @@
 - hosts: default
   remote_user: vagrant
   become: yes
+  vars:
+    executable_pip: pip-2.7
   roles:
     - supervisor
