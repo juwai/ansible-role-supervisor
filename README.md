@@ -1,12 +1,12 @@
 Ansible Role: Supervisor
 ========================
 
-Install Supervisor on CentOS servers.
+Install Supervisor on CentOS or Amazon Linux.
 
 Requirements
 ------------
 
-Written in Ansible 2.0.*
+Written in Ansible 2.3.*
 
 Role Variables
 --------------
