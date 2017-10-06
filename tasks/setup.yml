@@ -1,9 +1,19 @@
 ---
-- name: install supervisord
+- name: Install supervisord
   pip:
-    name: supervisor
-    version: "{{ supervisord_version }}"
+    name: 'supervisor'
+    version: '{{ supervisord_version }}'
     state: present
-    executable: "{{ executable_pip }}"
+    executable: '{{ executable_pip }}'
   environment:
     PATH: /usr/local/bin:/usr/bin:{{ ansible_env.PATH }}
+
+- name: Install supervisord stdout
+  pip:
+    name: 'supervisor-stdout'
+    version: '{{ supervisord_stdout_version }}'
+    state: present
+    executable: '{{ executable_pip }}'
+  environment:
+    PATH: /usr/local/bin:/usr/bin:{{ ansible_env.PATH }}
+  when: supervisord_stdout_enabled
