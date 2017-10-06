@@ -138,13 +138,13 @@ serverurl=unix:///tmp/supervisor.sock ; use a unix:// URL  for a unix socket
 ; include files themselves.
 
 [include]
-files = {{ supervisord_config_dir }}/*.conf
+files={{ supervisord_config_dir }}/*.conf
 
 {% if supervisord_stdout_enabled %}
 [eventlistener:supervisor_stdout]
-command = /usr/bin/supervisor_stdout
-buffer_size = 100
-events = PROCESS_LOG
-result_handler = supervisor_stdout:event_handler
-startsecs = 0
+command={{ supervisord_stdout_path }}
+buffer_size=100
+events=PROCESS_LOG
+result_handler=supervisor_stdout:event_handler
+startsecs=0
 {% endif %}
