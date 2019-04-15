@@ -4,4 +4,4 @@ supervisord_nodaemon: 'false'
 supervisord_stdout_enabled: no
 supervisord_stdout_path: '/usr/local/bin/supervisor_stdout'
 supervisord_stdout_version: 0.1.1
-supervisord_version: 3.3.1
+supervisord_version: 4.0.1
