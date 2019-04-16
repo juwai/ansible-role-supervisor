@@ -3,5 +3,4 @@
   service:
     name=supervisord
     state=restarted
-    sleep=5
   when: ansible_virtualization_type != 'docker'
