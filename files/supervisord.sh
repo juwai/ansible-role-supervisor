@@ -21,6 +21,7 @@ exec_prefix="${prefix}"
 prog_bin="${exec_prefix}/bin/supervisord"
 prog_ctl="${exec_prefix}/bin/supervisorctl"
 config_file="/etc/supervisord.conf"
+sock_file="/tmp/supervisor.sock"
 
 start()
 {
@@ -34,7 +35,21 @@ stop()
 {
     echo -n $"Shutting down $prog: "
     $prog_ctl shutdown > /dev/null
-    [ $? -eq 0 ] && success $"$prog shutdown" || failure $"$prog shutdown"
+    # Make sure sub processes also been stopped
+    for sleep in 2 2 2 2 4 4 4 4 8 8 8 8 last; do
+        if [ ! -e $sock_file ] ; then
+            success $"$prog shutdown"
+            break
+        else
+            if [[ $sleep -eq "last" ]] ; then
+                echo 'It takes too long to stop, must be something wrong'
+                failure $"$prog shutdown"
+                return 1
+            else
+                sleep $sleep
+            fi
+        fi
+    done
     echo
 }
 

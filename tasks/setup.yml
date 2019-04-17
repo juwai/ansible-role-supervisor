@@ -7,6 +7,7 @@
     executable: '{{ executable_pip }}'
   environment:
     PATH: /usr/local/bin:/usr/bin:{{ ansible_env.PATH }}
+  notify: supervisord restart
 
 - name: Install supervisord stdout
   pip:
