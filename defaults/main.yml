@@ -1,5 +1,6 @@
 ---
 supervisord_config_dir: '/etc/supervisor.d'
+supervisord_exec_prefix: '/usr/local'
 supervisord_nodaemon: 'false'
 supervisord_stdout_enabled: no
 supervisord_stdout_path: '/usr/local/bin/supervisor_stdout'

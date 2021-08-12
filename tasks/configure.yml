@@ -9,9 +9,9 @@
     mode: 0755
 
 - name: copy init script for supervisord
-  copy:
-    src: supervisord.sh
-    dest: /etc/init.d/supervisord
+  template:
+    src: 'templates/supervisord.j2'
+    dest: '/etc/init.d/supervisord'
     owner: root
     group: root
     mode: 0755
@@ -19,8 +19,14 @@
 - name: ensure supervisord start on boot
   service: name=supervisord state=started enabled=yes
 
+- name: check if supervisorctl executable exists
+  stat:
+    path: '/usr/local/bin/supervisorctl'
+  register: supervisorctl_executable
+
 - name: make supervisorctl available on the path
   alternatives:
     name: supervisorctl
     link: /usr/bin/supervisorctl
     path: /usr/local/bin/supervisorctl
+  when: supervisorctl_executable.stat.exists

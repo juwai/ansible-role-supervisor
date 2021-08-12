@@ -16,8 +16,7 @@
 
 prog="supervisord"
 
-prefix="/usr/local"
-exec_prefix="${prefix}"
+exec_prefix="{{ supervisord_exec_prefix }}"
 prog_bin="${exec_prefix}/bin/supervisord"
 prog_ctl="${exec_prefix}/bin/supervisorctl"
 config_file="/etc/supervisord.conf"
