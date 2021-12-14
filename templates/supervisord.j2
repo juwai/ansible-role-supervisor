@@ -20,7 +20,7 @@ exec_prefix="{{ supervisord_exec_prefix }}"
 prog_bin="${exec_prefix}/bin/supervisord"
 prog_ctl="${exec_prefix}/bin/supervisorctl"
 config_file="/etc/supervisord.conf"
-sock_file="/tmp/supervisor.sock"
+sock_file="/var/run/supervisor.sock"
 
 start()
 {
